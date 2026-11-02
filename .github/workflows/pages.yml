@@ -1,8 +1,8 @@
 name: Deploy site to GitHub Pages
 
+# 既定は「Deploy from a branch（main / root）」で公開（ルートの index.html が site/ へ転送）。
+# Settings → Pages の Source を「GitHub Actions」に切り替えた場合だけ、手動でこのワークフローを実行する。
 on:
-  push:
-    branches: [main, master]
   workflow_dispatch:
 
 permissions:

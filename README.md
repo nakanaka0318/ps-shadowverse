@@ -46,7 +46,7 @@ site/                静的サイト本体（外部ライブラリなし。グ�
 2. `python3 scripts/build_data.py` を実行する（標準ライブラリのみで動きます）。
    - バトル詳細から再計算したスコアと公式スコアが一致しない場合や、第9節時点の順位が公式の `result.json` と一致しない場合は、エラーで止まります。
 3. `site/index.html` をブラウザで開いて確認する（`file://` でも動きます）。
-4. push すると GitHub Actions が GitHub Pages に公開します。初回はリポジトリの Settings → Pages で Source を「GitHub Actions」にしてください。
+4. push すると GitHub Pages（Settings → Pages の Source：Deploy from a branch / `main` / root）が自動で更新されます。ルートの `index.html` が `site/` に転送します。Source を「GitHub Actions」に切り替える場合は、`.github/workflows/pages.yml` を手動実行してください。
 
 解説ページ（`analysis.html`）と、ポータルの「今週の見出し」は手書きの文章です。データを更新したら内容も見直してください。
 

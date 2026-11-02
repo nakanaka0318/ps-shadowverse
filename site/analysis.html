@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>シャドバPS 第10節総括</title>
+<meta name="description" content="Shadowverse Premier Series 26-27 第10節終了時点のシーズン総括。全チーム寸評、勝敗の構造、クラス環境の変化、プレーオフ展望。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232a78d6'/%3E%3Ctext x='16' y='21' font-size='13' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='700'%3EPS%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/style.css">
+<script src="assets/ps-data.js"></script>
+<script src="assets/app.js"></script>
+</head>
+<body data-page="analysis">
+<main>
+  <div class="page-head">
+    <div class="eyebrow">Season Review</div>
+    <h1>シーズン総括：第10節終了時点</h1>
+    <p>レギュラーシーズン全14節のうち10節、56ROUND中40ROUNDを消化しました。首位DFMの勝ち方、ZETAとレバンガ北海道の入れ替わり、新弾で変わったクラス環境、残り4節のプレーオフ争いを、集計データをもとに解説します。</p>
+    <div class="hero-meta">
+      <span class="pill">データ：第<b data-bind="last_section"></b>節まで</span>
+      <span class="pill">バトル詳細：第<b data-bind="detailed_through"></b>節まで（<b data-bind="n_battles"></b>バトル）</span>
+      <span class="pill">更新：<b data-bind="generated"></b></span>
+    </div>
+  </div>
+
+  <div class="article-layout">
+    <article class="prose">
+
+      <h2 id="summary">1. 第10節までの要点</h2>
+      <ul>
+        <li><b>DetonatioN FocusMe（DFM）が8勝2敗で首位。</b>3連勝中です。ただし8勝のうち6勝は3-2の辛勝で、バトル勝敗差は+9。数字を見る限り、圧倒的に強いというより「接戦を落とさない」ことで勝ち星を積み上げています。</li>
+        <li><b>2位MURASH GAMINGと3位Crazy Raccoonはともに6勝4敗。</b>勝敗、バトル差（+6）、獲得ポイント（25）まで同じで、直接対決（MRGが3-1で勝利）で順位が分かれています。</li>
+        <li><b>ZETA DIVISIONとレバンガ北海道が入れ替わった。</b>第5節終了時点でZETAは1勝4敗の7位、LVHは4勝1敗の2位でした。第6節以降はZETAが4勝1敗、LVHが1勝4敗。現在はともに5勝5敗で、バトル差の分だけZETAが4位、LVHが5位です。</li>
+        <li><b>下位3チームは3〜4勝。</b>RIDDLE ORDER（4勝6敗）、REJECT（3勝7敗）、VARREL（3勝7敗）。VARRELは0-4の完敗が3回ありましたが、直近は2連勝しています。</li>
+        <li><b>個人ではREJECTの拓海が7勝1敗で6連勝中。</b>MRGのToby、DFMのミルが7勝2敗で続きます。</li>
+        <li><b>8/27の第9弾「アズヴォルト・レヴナント」追加後に環境が動いた。</b>ドラゴン（41%→60%）とエルフ（50%→62%）の勝率が上がり、ウィッチ（52%→33%）とロイヤル（63%→45%）が下がりました。</li>
+      </ul>
+
+      <figure>
+        <div id="a-standings" class="card"></div>
+      </figure>
+
+      <h2 id="trend">2. 順位の推移</h2>
+      <p>下の図は各節終了時点の順位です。上位はDFM・MRG・CRの3チームが入れ替わりながら推移し、レバンガ北海道が第4節・第6節・第7節終了時点で首位に立ちました。第8節以降、LVHの4連敗とZETAの4連勝が重なり、4位の座が入れ替わっています。VARRELは第2節以降、最下位から抜け出せていません。</p>
+      <figure>
+        <div class="card"><div id="a-rank"></div></div>
+        <figcaption>節ごとの順位。点線より上がプレーオフ圏（上位4チーム）。点にカーソルを合わせると勝敗を表示。</figcaption>
+      </figure>
+
+      <h2 id="structure">3. 勝敗を分けるもの：試合形式から読む</h2>
+      <p>シャドバPSの1ROUNDは、選手が1対1で戦う<b>選手戦（BATTLE 1〜3）</b>と、チームで相談して戦う<b>チーム戦（BATTLE 4、2-2の場合はBATTLE 5）</b>で構成されます。各チームは7クラスすべてのデッキを提出し、<b>1ROUNDの中で同じクラスを2度使えません</b>。BATTLE 1は3デッキ、BATTLE 2・3は2デッキの候補から1つを選び、BATTLE 4は残り4デッキ、BATTLE 5はさらに残った3デッキから選びます。3ポイント先取でROUND勝利ですが、BATTLE 4は勝敗が決まった後も必ず行われます。</p>
+
+      <h3>3-1. 選手戦で2勝すると85%勝てる</h3>
+      <p>選手戦の結果ごとに、その後ROUNDに勝てたかどうかを集計しました。</p>
+      <div id="a-after3"></div>
+      <p>選手戦を2-1で終えたチームのROUND勝率は<b>85%（22勝4敗）</b>です。逆に1-2で終えたチームが逆転するには、BATTLE 4とBATTLE 5の両方に勝つ必要があります。これまでに逆転が起きたのは4回だけです。3-0になった試合は10回あり、すべて3-0側が勝っていますが、勝敗が決まった後のBATTLE 4は<b>5勝5敗</b>と五分でした。消化試合になると、リードしている側も力を入れきれないのかもしれません。</p>
+      <div class="callout"><b>0-2からの逆転は3回。</b>そのうち2回はDFMです。第5節後半のLVH戦と第6節のMRG戦は、どちらもBATTLE 1・2を落とした後、ミルのBATTLE 3から3連勝しました。もう1回は第8節後半のZETAで、CR相手に0-2から3連勝しています。</div>
+
+      <h3>3-2. 先攻は有利だが、差は小さい</h3>
+      <p>詳細を収録した156バトルの先攻勝率は<b>54.5%（85勝71敗）</b>です。前期（第5節まで）は57.0%、後期（第6節以降）は51.4%で、新弾後は先攻と後攻の差が縮まっています。ただし95%信頼区間は46.7%〜62.1%で、50%をまたいでいます。「先攻がやや有利な傾向」以上のことは、このサンプル数からは言えません。</p>
+      <p>チーム別に見ると差が目立ちます。<b>VARRELは後攻で3勝15敗</b>と大きく負け越しており、先攻（8勝12敗）と比べても落差があります。ZETAも先攻12勝5敗に対し後攻9勝12敗です。反対に、MRGは後攻（13勝8敗）のほうが先攻（9勝9敗）より勝率が高い珍しいチームです。</p>
+
+      <h3>3-3. フルセットとBATTLE 5</h3>
+      <p>BATTLE 5まで行われたのは12試合（詳細収録分）です。BATTLE 5に出せるのはその日まだ使っていない3クラスなので、構築の段階で「何を最後まで残すか」が問われます。<b>ドラゴンはBATTLE 5に残されることが多く、24枠中9枠</b>を占めました。</p>
+      <p>BATTLE 5の成績は<b>DFMが5勝1敗</b>で突出しています。一方、MRGは0勝3敗、REJECTは1勝3敗です。第10節（スコアのみ判明）を含めると、DFMは5バトルまでもつれた試合で6勝1敗です。</p>
+
+      <h2 id="teams">4. チーム別寸評</h2>
+      <p class="secondary">勝敗・順位は第10節まで、バトルの内訳（枠・クラス・先攻後攻）は第9節までの集計です。</p>
+
+      <div class="team-review" style="--c:var(--team-DFM)">
+        <h3><span>1位 DetonatioN FocusMe</span><span class="grade">8勝2敗</span><span class="grade">差 +9</span></h3>
+        <p><b>接戦に強い首位。</b>前期・後期ともに4勝1敗で、調子の波がありません。強さの中心は<b>BATTLE 3（7勝2敗）とBATTLE 5（5勝1敗）</b>で、ROUNDの後半に勝負強さを見せます。BATTLE 3は主にミル（3戦全勝）とかなでが担当しています。ミルは7勝2敗で、ドラゴンでは3戦全勝です。WGP 2025王者のユーリは5勝4敗と平凡ですが、主にBATTLE 1に入って相手の主力とぶつかっています。</p>
+        <p>クラス別では<b>エルフ6勝1敗、ドラゴン6勝1敗</b>と新環境で強いクラスを使いこなしています。一方で<b>ロイヤルは0勝6敗</b>と極端に負けています。バトル差+9は8勝のチームとしては小さく、3-2の勝ちが続いていることには運の要素も含まれます。残り4節はZETA・LVH・MRG・CRと上位勢が続き、日程は最も厳しくなっています。</p>
+      </div>
+
+      <div class="team-review" style="--c:var(--team-MRG)">
+        <h3><span>2位 MURASH GAMING</span><span class="grade">6勝4敗</span><span class="grade">差 +6</span></h3>
+        <p><b>選手戦はリーグ最強、チーム戦が課題。</b>選手戦は<b>18勝9敗（66.7%）でリーグ1位</b>です。BATTLE 2は8勝1敗で、主にglory・Toby・Spiciesが担当しています。Tobyは第1節で拓海に敗れた後に7連勝し、7勝2敗。ビショップでは4勝1敗です。</p>
+        <p>ところが<b>チーム戦は4勝8敗、BATTLE 5は0勝3敗</b>です。選手戦で作ったリードをチーム戦で返されるか、2-2からのBATTLE 5を落とす形が続いています。第10節はZETAに3-2で勝ち、2位を確保しました。チーム戦の勝率が5割に戻れば、首位争いに加われる力があります。</p>
+      </div>
+
+      <div class="team-review" style="--c:var(--team-CR)">
+        <h3><span>3位 Crazy Raccoon</span><span class="grade">6勝4敗</span><span class="grade">差 +6</span></h3>
+        <p><b>BATTLE 1とBATTLE 4が強い。</b>BATTLE 1は7勝2敗で、主にふえたが担当しています。ふえたはBATTLE 1で4勝1敗、通算6勝3敗です。チーム戦は8勝4敗、BATTLE 4は7勝2敗でリーグ屈指です。ウィッチ（4勝0敗）とビショップ（4勝1敗）の勝率が高くなっています。</p>
+        <p>弱点は<b>BATTLE 3（2勝7敗）</b>です。空白はBATTLE 3で0勝3敗、Atomは後期1勝3敗と苦しんでいます。前期・後期とも3勝2敗と安定しており、第10節もLVHに3-2で競り勝ちました。最終節にDFMとの首位攻防が組まれています。</p>
+      </div>
+
+      <div class="team-review" style="--c:var(--team-ZETA)">
+        <h3><span>4位 ZETA DIVISION</span><span class="grade">5勝5敗</span><span class="grade">差 +3</span></h3>
+        <p><b>1勝4敗から4連勝。今季いちばんの立て直し。</b>第5節終了時点では7位でした。第6節からREJECT・RIDDLE ORDER・CR・LVHに4連勝し、LVHには4-0で勝っています。きっかけの1つはCQCQの復調で、前期1勝4敗から後期は4戦全勝です。ヘイムは6勝3敗で、主にBATTLE 1を担当しています。</p>
+        <p><b>チーム戦8勝3敗（BATTLE 4は7勝2敗）</b>はリーグ最高の勝率です。チーム全体での読みとデッキの割り振りが機能しています。課題は後攻で、9勝12敗と負け越しています。第10節はMRGに2-3で惜敗しました。<b>残りの相手はDFM・VRL・REJECT・RDLで、試算上は最も楽な日程</b>です。</p>
+      </div>
+
+      <div class="team-review" style="--c:var(--team-LVH)">
+        <h3><span>5位 レバンガ北海道</span><span class="grade">5勝5敗</span><span class="grade">差 0</span></h3>
+        <p><b>前期の首位チームが4連敗。</b>前期は4勝1敗で、第7節終了時点では首位でした。第6節にVARRELを4-0で下した後、REJECT・RDL・ZETA・CRに4連敗しています。前期に<b>ウィッチで4勝1敗</b>だったrikkaは後期1勝3敗です。Era53も第7節まで6勝1敗でしたが、その後2連敗しました。新弾でウィッチが弱くなった影響を最も受けたチームと言えます。</p>
+        <p>選手戦は15勝12敗と勝ち越していますが、チーム戦は5勝7敗です。ただし勝ち数は4位ZETAと同じで、上位との差は大きくありません。第11節後半のMRG戦が、プレーオフ争いの大きな分かれ目になります。</p>
+      </div>
+
+      <div class="team-review" style="--c:var(--team-RDL)">
+        <h3><span>6位 RIDDLE ORDER</span><span class="grade">4勝6敗</span><span class="grade">差 −6</span></h3>
+        <p><b>開幕3連敗から、上位相手にも勝てるチームへ。</b>第1節から3連敗しましたが、その後VARREL・REJECTに勝ち、後期はLVH（3-1）と2位MRG（3-1）を破りました。第10節も首位DFMに2-3と競っています。Stylish_dekoは3勝1敗で3連勝中です。</p>
+        <p>課題は選手戦11勝16敗で、ROUNDの序盤に先行されることが多い点です。ビショップは1勝4敗と相性が良くありません。残りの相手はVRL・REJECT・CR・ZETAで、下位2チームとの直接対決を確実に取れるかが4位争いに加わる条件です。</p>
+      </div>
+
+      <div class="team-review" style="--c:var(--team-RC)">
+        <h3><span>7位 REJECT</span><span class="grade">3勝7敗</span><span class="grade">差 −4</span></h3>
+        <p><b>リーグ最高の個人成績を持つが、2-3で勝ちを逃す。</b>4巡目指名の<b>拓海が7勝1敗、6連勝中</b>で、ネメシスでは4戦全勝です。第9節にはミルとのネメシス同型にも勝ちました。それでもチームは3勝7敗です。7敗のうち3敗が2-3（DFMに2回、RDLに1回）で、BATTLE 5は1勝3敗。紙一重の試合を落とし続けています。</p>
+        <p>後攻で7勝13敗と負け越しているほか、逆指名で獲得したあぐのむが0勝4敗と結果を出せていません。バトル差−4は勝ち数ほど悪くなく、内容は3勝のチームより良いと言えます。</p>
+      </div>
+
+      <div class="team-review" style="--c:var(--team-VRL)">
+        <h3><span>8位 VARREL</span><span class="grade">3勝7敗</span><span class="grade">差 −14</span></h3>
+        <p><b>苦しいシーズンだが、直近は2連勝。</b>選手戦は8勝19敗、0-4の完敗が3回（CR・REJECT・LVH）あり、バトル差−14はリーグで最も悪い数字です。<b>後攻での3勝15敗</b>が最大の問題で、デッキ選択や構築が先攻寄りになっている可能性があります。ネメシスは1勝7敗です。</p>
+        <p>それでも第9節に3位CRを3-2で破り、第10節もREJECTに3-1で勝ちました。まっつも後期2勝1敗と上向いています。残りはRDL・ZETA・LVH・MRGです。試算上のプレーオフ進出確率は1%未満ですが、上位争いの行方を左右する相手になります。</p>
+      </div>
+
+      <h2 id="players">5. 個人成績のハイライト</h2>
+      <ul>
+        <li><b>拓海（REJECT）7勝1敗。</b>2026年4月のドラフトでは4巡目指名でした。BATTLE 1〜3のどの枠でも勝っていて、後期は4戦全勝です。</li>
+        <li><b>Toby（MRG）7勝2敗。</b>開幕戦で拓海に敗れた後、7連勝しました。この7連勝は今季の最長連勝です。</li>
+        <li><b>ミル（DFM）7勝2敗。</b>敗れたのは、自身がロイヤルを使ったCQCQ戦と、拓海とのネメシス同型の2試合だけです。BATTLE 3では3戦全勝で、DFMの逆転劇の起点になっています。</li>
+        <li><b>Era53（LVH）・ふえた（CR）・ヘイム（ZETA）が6勝3敗。</b>Era53はロイヤルで3戦全勝、ふえたはBATTLE 1で4勝1敗、ヘイムはビショップで3勝1敗です。</li>
+        <li><b>復調：CQCQ（ZETA）</b>は前期1勝4敗から後期4戦全勝。<b>不調：rikka（LVH）</b>は前期4勝1敗から後期1勝3敗。</li>
+      </ul>
+      <div class="callout"><b>勝率は割り引いて読む。</b>1人あたりの出場は最大9戦です。7勝2敗（77.8%）でも、Wilson法による95%信頼区間は45%〜94%と広く、本当の実力が5割を確実に上回っているとまでは言えません。<a href="players.html">選手データベース</a>では、出場数の少なさを補正した勝率と信頼区間も載せています。</div>
+
+      <h2 id="meta">6. クラス環境：新弾で何が変わったか</h2>
+      <p>2026年8月27日に第9弾カードパック「アズヴォルト・レヴナント」が追加されました。第5節（8/26）までを<b>前期</b>、第6節（8/30）以降を<b>後期</b>として比べると、次のような変化があります。</p>
+      <div class="table-wrap"><table>
+        <thead><tr><th>クラス</th><th class="r">前期 使用</th><th class="r">前期 勝率</th><th class="r">後期 使用</th><th class="r">後期 勝率</th><th>変化</th></tr></thead>
+        <tbody>
+          <tr><td><b>ネメシス</b></td><td class="r">32</td><td class="r">46.9%</td><td class="r">27</td><td class="r">51.9%</td><td>どちらの期も使用率1位（約19%）</td></tr>
+          <tr><td><b>ドラゴン</b></td><td class="r">29</td><td class="r">41.4%</td><td class="r">20</td><td class="r pos">60.0%</td><td>勝率が大きく上昇</td></tr>
+          <tr><td><b>エルフ</b></td><td class="r">22</td><td class="r">50.0%</td><td class="r">21</td><td class="r pos">61.9%</td><td>使用率・勝率ともに上昇</td></tr>
+          <tr><td><b>ビショップ</b></td><td class="r">18</td><td class="r">55.6%</td><td class="r">19</td><td class="r">57.9%</td><td>どちらの期も安定</td></tr>
+          <tr><td><b>ロイヤル</b></td><td class="r">24</td><td class="r">62.5%</td><td class="r">20</td><td class="r neg">45.0%</td><td>前期最強から後退</td></tr>
+          <tr><td><b>ナイトメア</b></td><td class="r">16</td><td class="r">43.8%</td><td class="r">18</td><td class="r neg">33.3%</td><td>使用は増えたが勝率は低い</td></tr>
+          <tr><td><b>ウィッチ</b></td><td class="r">31</td><td class="r">51.6%</td><td class="r">15</td><td class="r neg">33.3%</td><td>使用が半減し、勝率も急落</td></tr>
+        </tbody>
+      </table></div>
+      <p>攻略サイトでも、後期の主力として<b>コンボエルフやランプドラゴン</b>が挙がっています。PSの結果もそれと合っています。<b>ネメシス</b>は候補デッキに入ったときに選ばれる割合（選択率）が<b>55%</b>と全クラスで最も高く、「迷ったらネメシス」という信頼の厚さがうかがえます。ただ勝率は約49%で、使われる回数ほどには勝てていません。<b>ナイトメア</b>は選択率24%と最も低く、チーム戦では4勝10敗です。</p>
+      <p>相性表で目立つのは、<b>ロイヤル→ウィッチ 7勝2敗</b>、<b>ビショップ→ネメシス 7勝2敗</b>、<b>ネメシス→ナイトメア 7勝3敗</b>、<b>ウィッチ→ネメシス 6勝2敗</b>です。いずれも10戦前後のサンプルなので、傾向として見てください（詳しくは<a href="classes.html">クラス分析</a>）。同じクラス同士の対戦（ミラー）は156バトル中23回ありました。</p>
+
+      <h2 id="outlook">7. プレーオフ展望</h2>
+      <p>残り16ROUNDを10万回シミュレーションし、各チームが最終順位で上位4位に入る確率を試算しました。</p>
+      <figure>
+        <div class="card"><div id="a-po"></div></div>
+        <figcaption>プレーオフ（上位4チーム）進出確率の試算。カーソルを合わせると1位通過の確率も表示。</figcaption>
+      </figure>
+      <figure>
+        <div class="card"><div id="a-seed"></div></div>
+        <figcaption>最終順位の分布（行ごとに合計100%）。</figcaption>
+      </figure>
+      <p><b>DFMは99%でほぼ当確</b>、1位通過も72%です。<b>MRGとCRは約90%</b>。4枠目をめぐっては、<b>ZETA（73%）がLVH（38%）をリード</b>しています。ZETAの残り日程（DFM・VRL・REJECT・RDL）は対戦相手の平均の強さが8チームで最も低く、これが差につながっています。RDL（5%）・REJECT（3%）・VARREL（0.2%）は、残りをほぼ全勝したうえで上位の取りこぼしを待つ必要があります。</p>
+      <h3>注目カード</h3>
+      <ul>
+        <li><b>第11節前半（11/11）DFM vs ZETA</b>：ZETAは第4節にDFMを3-1で下しています。ZETAにとっては4位を固めるための大一番です。</li>
+        <li><b>第11節後半（11/18）MRG vs LVH</b>：LVHは第4節にMRGを3-2で破っています。LVHが連敗を止められるかどうかの試合です。</li>
+        <li><b>第12節（12/27）DFM vs LVH、MRG vs CR</b>：年内最後の節。2位・3位が直接対決します。</li>
+        <li><b>第14節（1/24）DFM vs CR</b>：最終節の首位攻防。第7節ではCRが3-2で勝っています。</li>
+      </ul>
+      <div class="callout"><b>試算の方法と限界。</b>各チームの強さは、ここまでのバトル勝率に事前分布Beta(10,10)をかけて50%に寄せた値です（DFM 56.7%〜VRL 38.7%）。log5法で1バトルの勝率に変換し、BATTLE 4までは必ず実施、2-2のときだけBATTLE 5を行うとしてROUNDを再現しました。順位は公式と同じ優先順位（勝ち点→バトル差→獲得ポイント→直接対決）で決めています。選手の起用、クラスの相性、環境の変化、調子の波は考慮していません。また、プレーオフ進出を上位4チームとしているのは報道ベースです。正式な条件は公式ルールブックで確認してください。</div>
+
+      <h2 id="notes">8. この記事のデータについて</h2>
+      <p>集計は、公式サイトに掲載されたROUNDスコアとバトル結果をもとにした公開データ（第1〜9節）と、報道で確認した第10節のチームスコアを使っています。第10節のバトル内訳（選手・クラス）は未収録なので、個人成績・クラス成績は第9節までの値です。詳しくは<a href="about.html">データについて</a>をご覧ください。</p>
+    </article>
+
+    <aside class="toc card">
+      <b>目次</b>
+      <ol>
+        <li><a href="#summary">要点</a></li>
+        <li><a href="#trend">順位の推移</a></li>
+        <li><a href="#structure">勝敗を分けるもの</a></li>
+        <li><a href="#teams">チーム別寸評</a></li>
+        <li><a href="#players">個人成績</a></li>
+        <li><a href="#meta">クラス環境</a></li>
+        <li><a href="#outlook">プレーオフ展望</a></li>
+        <li><a href="#notes">データについて</a></li>
+      </ol>
+    </aside>
+  </div>
+</main>
+</body>
+</html>

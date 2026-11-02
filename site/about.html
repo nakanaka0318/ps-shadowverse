@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>シャドバPS データについて</title>
+<meta name="description" content="シャドバPS アナリティクスのデータ出典、集計方法、指標の定義、データのダウンロード。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232a78d6'/%3E%3Ctext x='16' y='21' font-size='13' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='700'%3EPS%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/style.css">
+<script src="assets/ps-data.js"></script>
+<script src="assets/app.js"></script>
+</head>
+<body data-page="about">
+<main>
+  <div class="page-head">
+    <div class="eyebrow">About the data</div>
+    <h1>データについて</h1>
+    <p>このサイトの数字がどこから来て、どう計算されているかをまとめました。非公式のファン集計なので、正確な情報は必ず公式サイトで確認してください。</p>
+  </div>
+  <div class="prose">
+    <h2>収録範囲</h2>
+    <ul>
+      <li><b>チームスコア</b>：第1〜<span data-bind="last_section"></span>節（<span data-bind="n_matches"></span>ROUND）。</li>
+      <li><b>バトル詳細</b>（出場選手、候補デッキ、使用クラス、先攻後攻、勝敗、配信の該当時刻）：第1〜<span data-bind="detailed_through"></span>節（<span data-bind="n_battles"></span>バトル）。</li>
+      <li>第10節（2026/11/1）はチームスコアのみです。個人成績、クラス成績、先攻後攻は第9節までの値です。</li>
+    </ul>
+
+    <h2>出典</h2>
+    <ul>
+      <li><a href="https://ps.shadowverse-wb.com/26-27/" target="_blank" rel="noopener">Shadowverse Premier Series 26-27 公式サイト</a>：日程、ROUNDスコア、選手、各節の試合結果のお知らせ、ルール（<a href="https://ps.shadowverse-wb.com/26-27/terms_26-27.pdf" target="_blank" rel="noopener">公式ルールブック</a>）。</li>
+      <li><a href="https://github.com/hirobosu-staff/svps-data" target="_blank" rel="noopener">hirobosu-staff/svps-data</a>：公式サイトとシャドラボ（svlabo.jp）の公開情報を日次で集計した公開データ。schedule.csv、battle_details.csv、match_results.csv、players.csv、result.json を利用しました（2026/11/1時点）。</li>
+      <li>第10節のスコア：<a href="https://gamewith.jp/shadowverse-wb/586247" target="_blank" rel="noopener">GameWith 第10節記事</a>、<a href="https://x.com/shadowversePS" target="_blank" rel="noopener">シャドバPS公式X</a>、<a href="https://x.com/MURASHeSports" target="_blank" rel="noopener">MURASH GAMING公式X</a>。</li>
+      <li>大会概要・ドラフト：<a href="https://www.4gamer.net/games/760/G076037/20260305073/" target="_blank" rel="noopener">4Gamer.net（参戦チーム発表）</a>、<a href="https://www.famitsu.com/article/202606/79007" target="_blank" rel="noopener">ファミ通.com（最終オーディション・ドラフト）</a>、<a href="https://svlabo.jp/blog-entry-1650.html" target="_blank" rel="noopener">シャドラボ（ドラフト会議結果）</a>、<a href="https://x.com/RIDDLEORDER/status/2068637810148671983" target="_blank" rel="noopener">RIDDLE公式X</a>、<a href="https://shadowverse-magazine.com/news/svwb/69626/" target="_blank" rel="noopener">Shadowverse Magazine（ルール）</a>、<a href="https://esports4.net/2026/08/16/shadowverse-premier-series-26-27%E3%80%80%E7%AC%AC4%E7%AF%80%E7%B5%82%E4%BA%86%E6%99%82%E7%82%B9%E3%81%BE%E3%81%A7%E3%81%AE%E3%83%A9%E3%83%B3%E3%82%AD%E3%83%B3%E3%82%B0%E3%81%BE%E3%81%A8%E3%82%81/" target="_blank" rel="noopener">esports4.net（プレーオフ進出枠）</a>。</li>
+      <li>選手の経歴：<a href="https://realsound.jp/tech/2025/09/post-2144549.html" target="_blank" rel="noopener">Real Sound（ミル選手）</a>ほか報道。</li>
+      <li>カードパック：<a href="https://saiganak.com/news/shadowverse-wb-revenants-of-azvaldt-announcement/" target="_blank" rel="noopener">アズヴォルト・レヴナント告知</a>、<a href="https://www.gamespark.jp/article/2026/06/22/168284.html" target="_blank" rel="noopener">Game*Spark（クロニクル・オブ・デスティニー）</a>。</li>
+      <li>参考にした集計サイト：<a href="https://shadowverse-vision.com/" target="_blank" rel="noopener">Shadowverse Vision</a>、<a href="https://shadowverse-magazine.com/svwb/event/ps26-27/ranking/" target="_blank" rel="noopener">Shadowverse Magazine ランキング</a>。個人成績が一致することを確認しています（例：第9節前半終了時点で拓海7勝1敗）。</li>
+    </ul>
+
+    <h2>検証</h2>
+    <ul>
+      <li>バトル詳細から再計算した各ROUNDのスコアは、公式日程の36ROUNDすべてで一致しています。</li>
+      <li>第9節終了時点の順位表（勝敗・DIFF・BATTLE POINT）は、公式の順位データ（result.json）と全8チームで一致しています。生成スクリプトは、一致しない場合にエラーで止まります。</li>
+    </ul>
+
+    <h2>指標の定義</h2>
+    <dl>
+      <dt><b>選手戦／チーム戦</b></dt><dd>BATTLE 1〜3を選手戦、BATTLE 4・5をチーム戦として集計しています。個人成績は選手戦のみです。</dd>
+      <dt><b>先攻勝率</b></dt><dd>先攻側が勝ったバトルの割合。公開データの先攻・後攻は対戦表の左側チーム（team1）から見た値なので、右側チームについては反転させています。</dd>
+      <dt><b>選択率</b></dt><dd>あるクラスが候補デッキ（BATTLE 1は3つ、BATTLE 2・3は2つ、BATTLE 4は4つ、BATTLE 5は3つ）に入っていたとき、実際に使われた割合。</dd>
+      <dt><b>95%信頼区間</b></dt><dd>Wilsonスコア法。少ない試合数での勝率がどのくらいぶれうるかの目安です。</dd>
+      <dt><b>補正勝率</b></dt><dd>(勝利数+5)/(試合数+10)。事前分布Beta(5,5)によるベイズ補正で、試合数が少ない選手ほど50%に近づきます。</dd>
+      <dt><b>前期／後期</b></dt><dd>第9弾カードパックが追加された2026/8/27より前（第1〜5節）を前期、以降（第6節〜）を後期としています。</dd>
+      <dt><b>プレーオフ進出確率</b></dt><dd>チームのバトル勝率を事前分布Beta(10,10)で補正し、log5法で対戦ごとのバトル勝率に変換して、残り全ROUNDを10万回シミュレーションした結果です（乱数シード固定）。試合形式（BATTLE 4は必ず実施、2-2のときだけBATTLE 5）と公式の順位決定基準を再現しています。上位4チームがプレーオフに進むという前提は報道ベースです。</dd>
+      <dt><b>試算勝率（次節）</b></dt><dd>上記と同じ強さの推定値から、1ROUNDの勝率を解析的に計算した値です。</dd>
+    </dl>
+
+    <h2>注意事項</h2>
+    <ul>
+      <li>1選手あたりの出場数は最大9戦、クラスの組み合わせごとでは10戦前後です。小さな差は偶然の範囲に収まります。</li>
+      <li>候補デッキの選び方（相手の候補を見てから選ぶのか、など）の細かい手順は公開情報から確認できていません。選択率は「結果としてどのくらい使われたか」を示す指標です。</li>
+      <li>チーム名・選手名・ゲーム名は各権利者に帰属します。当サイトは非営利のファン解析で、Cygamesおよび各チームとは関係ありません。</li>
+    </ul>
+
+    <h2 id="download">データのダウンロード</h2>
+    <ul>
+      <li><a href="data/ps.json">ps.json</a>：当サイトのすべての集計結果（試合、順位、選手、クラス、シミュレーション）。</li>
+      <li><a href="data/raw/schedule.csv">schedule.csv</a>・<a href="data/raw/battle_details.csv">battle_details.csv</a>・<a href="data/raw/match_results.csv">match_results.csv</a>・<a href="data/raw/players.csv">players.csv</a>：集計に使った元データ。</li>
+      <li><a href="data/manual/round_scores.csv">round_scores.csv</a>：バトル詳細が未収録の節について、手入力したチームスコア。</li>
+    </ul>
+
+    <h2>更新の仕方</h2>
+    <p>リポジトリの <code>data/raw/</code> にあるCSVを差し替えるか、<code>data/manual/round_scores.csv</code> に新しい節のスコアを追記して、<code>python3 scripts/build_data.py</code> を実行します。<code>main</code> ブランチに push すると、GitHub Actions がサイトを GitHub Pages に公開します。</p>
+  </div>
+</main>
+</body>
+</html>

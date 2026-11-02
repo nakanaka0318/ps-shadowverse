@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>シャドバPS 選手データベース</title>
+<meta name="description" content="Shadowverse Premier Series 26-27 全選手の個人成績データベース。勝率・信頼区間・先攻後攻・対戦ログ。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232a78d6'/%3E%3Ctext x='16' y='21' font-size='13' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='700'%3EPS%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/style.css">
+<script src="assets/ps-data.js"></script>
+<script src="assets/app.js"></script>
+</head>
+<body data-page="players">
+<main>
+  <div class="page-head">
+    <div class="eyebrow">Player Database</div>
+    <h1>選手データベース</h1>
+    <p>選手戦（BATTLE 1〜3）の個人成績です。チーム戦（B4・5）はチームで相談して戦うため、個人の成績には含めていません。選手名をクリックすると、クラス別・枠別の成績と全対戦ログを表示します。</p>
+  </div>
+  <div id="player-panel" class="player-panel" style="margin-bottom:20px"></div>
+  <section>
+    <div class="controls" id="team-chips" role="group" aria-label="チームで絞り込み"></div>
+    <div class="controls">
+      <input type="search" id="q" placeholder="選手名で検索" aria-label="選手名で検索">
+      <label>最低出場数 <select id="min-n"><option value="0">すべて</option><option value="1">1戦以上</option><option value="5">5戦以上</option><option value="8">8戦以上</option></select></label>
+      <span class="muted" id="player-count"></span>
+    </div>
+    <div class="card flush" id="player-table"></div>
+    <p class="note">補正勝率＝(勝利数+5)/(試合数+10)。試合数の少ない選手の勝率が極端な値になりにくいよう、全体平均の50%に寄せた値です。前期は8/26まで（第5節まで）、後期は8/27の第9弾追加以降。</p>
+  </section>
+  <section>
+    <div class="section-title"><h2>勝率と95%信頼区間（5戦以上）</h2></div>
+    <div class="card">
+      <div id="ci-chart"></div>
+      <p class="note">ひげは Wilson 法による95%信頼区間です。1人あたり10戦前後では区間が広く、勝率60%でも「50%を確実に上回る」とまでは言えないことが分かります。補正勝率の順に並べています。</p>
+    </div>
+  </section>
+</main>
+</body>
+</html>

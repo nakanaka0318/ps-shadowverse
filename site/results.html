@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>シャドバPS 試合結果</title>
+<meta name="description" content="Shadowverse Premier Series 26-27 全ROUNDの試合結果とバトル内訳。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232a78d6'/%3E%3Ctext x='16' y='21' font-size='13' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='700'%3EPS%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/style.css">
+<script src="assets/ps-data.js"></script>
+<script src="assets/app.js"></script>
+</head>
+<body data-page="results">
+<main>
+  <div class="page-head">
+    <div class="eyebrow">Results</div>
+    <h1>試合結果</h1>
+    <p>全ROUNDのスコアとバトル内訳です。試合をクリックすると、各バトルの出場選手、候補デッキと使用クラス、先攻・後攻、勝者、配信アーカイブの該当時刻へのリンクを表示します。</p>
+  </div>
+  <div class="controls" id="team-chips" role="group" aria-label="チームで絞り込み"></div>
+  <div class="controls">
+    <label>節 <select id="sec-select" aria-label="節で絞り込み"></select></label>
+    <label><input type="checkbox" id="show-future"> 未実施の試合も表示</label>
+  </div>
+  <div id="team-summary"></div>
+  <div id="result-list"></div>
+  <p class="note">第<span data-bind="detailed_through"></span>節まではバトル単位の詳細を収録しています。それ以降の節はチームスコアのみです（出典は<a href="about.html">データについて</a>）。</p>
+</main>
+</body>
+</html>

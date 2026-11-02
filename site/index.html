@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>シャドバPS アナリティクス</title>
+<meta name="description" content="Shadowverse Premier Series 26-27（シャドバPS）の試合結果・順位・個人成績・クラス使用率を解析する非公式ポータル。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232a78d6'/%3E%3Ctext x='16' y='21' font-size='13' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='700'%3EPS%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/style.css">
+<script src="assets/ps-data.js"></script>
+<script src="assets/app.js"></script>
+</head>
+<body data-page="index">
+<main>
+  <div class="hero">
+    <div class="eyebrow">Shadowverse: Worlds Beyond 公式リーグ</div>
+    <h1>Shadowverse Premier Series 26-27<br>解析ポータル</h1>
+    <p class="lead">優勝賞金1億円をかけた8チームの公式リーグ「シャドバPS」。全バトルの勝敗・使用クラス・先攻後攻を集計し、順位の行方、チームの強み、選手の調子、デッキ環境を読み解きます。</p>
+    <div class="hero-meta" id="hero-meta"></div>
+  </div>
+
+  <section>
+    <div class="grid g-4" id="tiles"></div>
+  </section>
+
+  <div class="grid g-main">
+    <section>
+      <div class="section-title"><h2>順位表</h2><a href="teams.html">チーム分析 →</a></div>
+      <div class="card" id="standings"></div>
+    </section>
+    <section>
+      <div class="section-title"><h2>今週の見出し</h2><a href="analysis.html">解説を読む →</a></div>
+      <div class="card">
+        <ul class="list-plain">
+          <li class="headline"><span class="ic">👑</span><p><b>DFMが8勝2敗で首位を固める。</b>8勝のうち6勝が3-2の辛勝で、5バトル目までもつれた試合は6勝1敗。接戦で負けない強さが際立ちます。</p></li>
+          <li class="headline"><span class="ic">🔥</span><p><b>拓海（REJECT）が個人7勝1敗・6連勝中。</b>ネメシスでは4戦全勝。チームは3勝7敗と苦しく、個人の好調を勝ち星につなげられていません。</p></li>
+          <li class="headline"><span class="ic">📉</span><p><b>レバンガ北海道が4連敗。</b>第7節終了時点では首位でしたが、第8節以降は勝ちがなく5位に後退。勝ち数は4位ZETAと同じ5勝で、バトル差の分だけ圏外にいます。</p></li>
+          <li class="headline"><span class="ic">🐉</span><p><b>新弾後はドラゴンとエルフが上昇。</b>8/27以降、ドラゴンの勝率は41%→60%、エルフは50%→62%に。逆にウィッチは52%→33%まで落ちました。</p></li>
+          <li class="headline"><span class="ic">⚡</span><p><b>最下位のVARRELが2連勝。</b>CR（3-2）とREJECT（3-1）を破り、第11節でRIDDLE ORDERとの直接対決に臨みます。</p></li>
+        </ul>
+      </div>
+    </section>
+  </div>
+
+  <div class="grid g-main">
+    <section>
+      <div class="section-title"><h2 id="latest-title">最新の結果</h2><a href="results.html">すべての試合結果 →</a></div>
+      <div id="latest"></div>
+    </section>
+    <section>
+      <div class="section-title"><h2 id="next-title">次節</h2><a href="guide.html#schedule">日程 →</a></div>
+      <div class="card" id="next"></div>
+      <p class="note">試算勝率は、各チームのバトル勝率から1ROUND（最大5バトル）の勝率を計算した参考値です。</p>
+    </section>
+  </div>
+
+  <section>
+    <div class="section-title"><h2>順位の推移</h2><span class="muted">点にカーソルを合わせると各節終了時の成績を表示</span></div>
+    <div class="card"><div id="rank-chart"></div></div>
+  </section>
+
+  <section>
+    <div class="section-title"><h2>コンテンツ</h2></div>
+    <div class="grid g-3">
+      <a class="card" href="analysis.html"><h3>📝 解説・総括</h3><p class="secondary" style="margin:0">ここまでのシーズンを、データをもとに読み解く長文解説。全チームの寸評とプレーオフ展望。</p></a>
+      <a class="card" href="results.html"><h3>📋 試合結果</h3><p class="secondary" style="margin:0">全ROUNDのバトル内訳。選手、候補デッキ、使用クラス、先攻後攻、映像の該当時刻へのリンク付き。</p></a>
+      <a class="card" href="teams.html"><h3>🛡️ チーム分析</h3><p class="secondary" style="margin:0">バトル枠別の勝率、チーム戦、クラス別成績、直接対決、所属選手の成績。</p></a>
+      <a class="card" href="players.html"><h3>👤 選手データベース</h3><p class="secondary" style="margin:0">全37選手の勝率、信頼区間、先攻後攻、前期後期の比較、対戦ログ。並べ替えと検索に対応。</p></a>
+      <a class="card" href="classes.html"><h3>🃏 クラス分析</h3><p class="secondary" style="margin:0">使用率、勝率、先攻後攻の差、クラス相性表、節ごとの使用推移、チームごとの得意クラス。</p></a>
+      <a class="card" href="guide.html"><h3>📖 大会ガイド</h3><p class="secondary" style="margin:0">試合形式、順位の決め方、全日程、ドラフト、各チームのロスター。初めて観る人向けの解説。</p></a>
+    </div>
+  </section>
+</main>
+</body>
+</html>
